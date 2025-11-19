@@ -113,7 +113,7 @@ def apprendre(q_table, temp, action, reward, nouvelle_temp, alpha, gamma):
 # PARTIE 3 : ENTRAÎNEMENT
 # ═══════════════════════════════════════════════════════════════
 
-def entrainer(episodes=100):
+def entrainer(episodes=200):
     """Entraîne l'agent"""
     
     print("="*50)
