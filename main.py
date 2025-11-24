@@ -9,7 +9,7 @@ Date: Novembre 2025
 """
 
 import random
-
+import matplotlib.pyplot as plt
 # ═══════════════════════════════════════════════════════════════
 # PARTIE 1 : LA CHAMBRE (simulation simple)
 # ═══════════════════════════════════════════════════════════════
@@ -119,55 +119,48 @@ def apprendre(q_table, temp, action, reward, nouvelle_temp, alpha, gamma):
 # ═══════════════════════════════════════════════════════════════
 
 def entrainer(episodes=200):
-    """Entraîne l'agent"""
+    q_table = {}
+    alpha = 0.1
+    gamma = 0.9
+    epsilon = 1.0
+    rewards_history = []  # <-- stocke la récompense totale de chaque épisode
     
-    print("="*50)
-    print("  ENTRAÎNEMENT Q-LEARNING")
-    print("="*50)
-    
-    # Initialisation
-    q_table = {}  # Mémoire vide
-    alpha = 0.1   # Vitesse apprentissage
-    gamma = 0.9   # Importance futur
-    epsilon = 1.0 # Exploration initiale (100%)
-    
-    # Entraînement
     for episode in range(episodes):
-        
-        # Nouvel épisode
         chambre = reset_chambre()
         temp = discretiser(chambre['temp'])
         reward_total = 0
         
-        # Jouer l'épisode
         for step in range(50):
-            
-            # 1. Choisir action
             action = choisir_action(q_table, temp, epsilon)
-            
-            # 2. Exécuter
             reward, done = faire_action(chambre, action)
             nouvelle_temp = discretiser(chambre['temp'])
-            
-            # 3. Apprendre
             apprendre(q_table, temp, action, reward, nouvelle_temp, alpha, gamma)
-            
-            # 4. Avancer
             temp = nouvelle_temp
             reward_total += reward
-            
             if done:
                 break
         
-        # Diminuer exploration
+        rewards_history.append(reward_total)  # <-- ajoute la récompense totale
         epsilon = max(0.01, epsilon * 0.995)
         
-        # Afficher progression tous les 20 épisodes
         if (episode + 1) % 20 == 0:
             print(f"Épisode {episode+1:3d} | Reward: {reward_total:6.1f} | Epsilon: {epsilon:.3f} | Q-table: {len(q_table)}")
     
-    print("\n✅ Entraînement terminé !\n")
+    # ── Créer et enregistrer le plot ──
+    plt.figure(figsize=(8,4))
+    plt.plot(rewards_history, label="Reward total par épisode")
+    plt.xlabel("Épisode")
+    plt.ylabel("Reward total")
+    plt.title("Évolution des récompenses")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("rewards_plot.png")  # <-- sauvegarde en PNG
+    plt.close()
+    
+    print("\n✅ Entraînement terminé ! Le plot a été enregistré sous 'rewards_plot.png'\n")
     return q_table
+
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -175,60 +168,35 @@ def entrainer(episodes=200):
 # ═══════════════════════════════════════════════════════════════
 
 def tester(q_table):
-    """Teste l'agent entraîné"""
-    
-    print("="*50)
-    print("  TEST DE L'AGENT")
-    print("="*50)
-    
     chambre = reset_chambre()
     temp_initiale = chambre['temp']
-    print(f"\n🌡️  Température initiale: {temp_initiale:.1f}°C")
-    print(f"🎯 Objectif: Maintenir 20-22°C\n")
-    print("Step | Temp  | Action      | Reward")
-    print("-----+-------+-------------+--------")
-    
-    temps_confort = 0
-    
+    temperatures = []
+    actions_taken = []
+
     for step in range(50):
         temp = discretiser(chambre['temp'])
-        
-        # Pas d'exploration (epsilon=0)
         action = choisir_action(q_table, temp, epsilon=0)
-        
-        # Exécuter
         reward, done = faire_action(chambre, action)
-        
-        # Noms d'actions
-        actions = ["Refroidir", "Rien", "Chauffer"]
-        
-        # Afficher
-        print(f"{step:4d} | {chambre['temp']:5.1f} | {actions[action]:11s} | {reward:6.1f}")
-        
-        # Compter temps dans zone confort
-        if 20 <= chambre['temp'] <= 22:
-            temps_confort += 1
-        
+        temperatures.append(chambre['temp'])
+        actions_taken.append(action)
         if done:
             break
     
-    # Résultats
-    print("\n" + "="*50)
-    print("  RÉSULTATS")
-    print("="*50)
-    print(f"Température finale: {chambre['temp']:.1f}°C")
-    print(f"Temps dans zone confort: {temps_confort}/50 ({temps_confort*2}%)")
-    print(f"États appris: {len(q_table)}")
+    # ── Plot de la température ──
+    plt.figure(figsize=(8,4))
+    plt.plot(temperatures, marker='o', label="Température")
+    plt.axhline(20, color='green', linestyle='--', label="Zone confort min")
+    plt.axhline(22, color='green', linestyle='--', label="Zone confort max")
+    plt.xlabel("Step")
+    plt.ylabel("Température (°C)")
+    plt.title("Évolution de la température pendant le test")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("temperature_test.png")
+    plt.close()
     
-    # Montrer quelques valeurs Q
-    print("\n📊 Exemples de Q-values apprises:")
-    for temp_val in [18, 20, 21, 22, 24]:
-        if any((temp_val, a) in q_table for a in range(3)):
-            print(f"\n   Température {temp_val}°C:")
-            for action in range(3):
-                q = q_table.get((temp_val, action), 0)
-                actions = ["Refroidir", "Rien", "Chauffer"]
-                print(f"      {actions[action]:10s}: {q:7.2f}")
+    print("\n✅ Test terminé ! Le plot a été enregistré sous 'temperature_test.png'\n")
 
 
 # ═══════════════════════════════════════════════════════════════
