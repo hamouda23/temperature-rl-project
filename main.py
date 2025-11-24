@@ -1,6 +1,10 @@
 """
-Q-LEARNING VERSION ULTRA-SIMPLE
+
+Q-LEARNING VERSION ULTRA-SIMPLE SANS GYMNASIUM ET SANS DEPENDANCES
+===============================================================
 Contrôle de température - Code minimal pour apprendre
+Auteur: Samir HAMOUDA Raouf Ochi
+Date: Novembre 2025
 """
 
 import random
