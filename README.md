@@ -79,11 +79,10 @@ temperature-rl/
 
 ## 👤 Auteur
 
-[Ton Nom] - Projet d'apprentissage par renforcement
+Samir HAMOUDA & Raouf OCHI - Projet d'apprentissage par renforcement
 
 ## 📄 Licence
 
-MIT License - Libre d'utilisation et modification
 
 ## 🌟 Remerciements
 
