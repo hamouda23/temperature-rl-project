@@ -120,7 +120,7 @@ def apprendre(q_table, temp, action, reward, nouvelle_temp, alpha, gamma):
 
 def entrainer(episodes=200):
     q_table = {}
-    alpha = 0.1
+    alpha = 0.01
     gamma = 0.9
     epsilon = 1.0
     rewards_history = []  # <-- stocke la récompense totale de chaque épisode
@@ -155,10 +155,10 @@ def entrainer(episodes=200):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("rewards_plot.png")  # <-- sauvegarde en PNG
+    plt.savefig("rewards_plot1.png")  # <-- sauvegarde en PNG
     plt.close()
-    
-    print("\n✅ Entraînement terminé ! Le plot a été enregistré sous 'rewards_plot.png'\n")
+
+    print("\n✅ Entraînement terminé ! Le plot a été enregistré sous 'rewards_plot1.png'\n")
     return q_table
 
 
@@ -193,10 +193,10 @@ def tester(q_table):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("temperature_test.png")
+    plt.savefig("temperature_test1.png")
     plt.close()
-    
-    print("\n✅ Test terminé ! Le plot a été enregistré sous 'temperature_test.png'\n")
+
+    print("\n✅ Test terminé ! Le plot a été enregistré sous 'temperature_test1.png'\n")
 
 
 # ═══════════════════════════════════════════════════════════════
