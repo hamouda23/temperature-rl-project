@@ -18,6 +18,11 @@
 - Début : 1.0 (explore tout)
 - Fin : 0.01 (exploite ce qu'il sait)
 
+### Alpha
+- La vitesse à laquelle l'agent met à jour ses connaissances
+- ALPHA = 0.1 (10%) Apprentissage ÉQUILIBRÉ
+- ALPHA = 0.01 (1%) Apprentissage STABLE mais LENT
+
 ### Résultats :
 - Agent atteint 85-95% du temps dans zone confort
 - Après 100 épisodes seulement !
