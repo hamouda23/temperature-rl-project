@@ -212,7 +212,7 @@ if __name__ == "__main__":
     print("="*50 + "\n")
     
     # 1. ENTRAÎNER
-    q_table = entrainer(episodes=100)
+    q_table = entrainer(episodes=200)
     
     # 2. TESTER
     tester(q_table)
