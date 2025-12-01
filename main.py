@@ -2,8 +2,9 @@
 """
 
 Q-LEARNING VERSION ULTRA-SIMPLE SANS GYMNASIUM ET SANS DEPENDANCES
-===============================================================
-Contrôle de température - Code minimal pour apprendre
+===============================================================================
+Contrôle de température - Code minimal pour apprendre Le Q-Learning
+-------------------------------------------------------------------------------
 Auteur: Samir HAMOUDA Raouf Ochi
 Date: Novembre 2025
 """
