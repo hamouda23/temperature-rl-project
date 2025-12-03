@@ -45,9 +45,11 @@ def faire_action(chambre, action):
     
     # Récompense
     if 20 <= chambre['temp'] <= 22:
-        reward = 10  # BIEN ! Dans la zone confort
+      reward = 10
+    elif 19 <= chambre['temp'] <= 23:  # Zone tampon
+      reward = 5
     else:
-        reward = -1  # MAL ! Hors zone
+      reward = -1
     
     # Avancer le temps
     chambre['step'] += 1
@@ -212,7 +214,7 @@ if __name__ == "__main__":
     print("="*50 + "\n")
     
     # 1. ENTRAÎNER
-    q_table = entrainer(episodes=200)
+    q_table = entrainer(episodes=1000)
     
     # 2. TESTER
     tester(q_table)
