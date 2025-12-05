@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 # PARTIE 1 : LA CHAMBRE (simulation simple)
 # ═══════════════════════════════════════════════════════════════
 
-def reset_chambre():
+def reset_chambre():   # Exmple méthode Gymnasium  Env.reset()
     """Commence un nouvel épisode"""
     return {
         'temp': random.randint(15, 28),  # Température initiale aléatoire

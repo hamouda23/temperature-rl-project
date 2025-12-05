@@ -36,3 +36,18 @@
       reward = 5
  else:
       reward = -1
+
+### Bibliothèques Python pour RL :
+- Gymnasium 
+
+- RLlib (de Ray): Framework scalable pour RL multi-agents et deep RL. Idéal pour des simulations de chauffage complexes (ex. : district heating). Exemple : Intégrez un env Gym pour optimiser l'énergie sur plusieurs pièces. Installation : pip install ray[rllib].
+Projet exemple : RLHeatingController sur GitHub.
+
+- Stable Baselines3: Implémentations fiables d'algos RL (PPO, DDPG, SAC) sur Gymnasium. Parfait pour affiner un contrôleur PID-like en RL pour température (ex. : TCLab hardware). Facile à tuner pour minimiser overshoots. Installation : pip install stable-baselines3.
+Utile pour : Simulations rapides de régulation thermique.
+
+- pyqlearning: Bibliothèque légère pour Q-Learning et Deep Q-Network, sans dépendances lourdes. Directement applicable à des envs température discrets (comme votre code). Supporte multi-agents pour systèmes HVAC. Installation : pip install pyqlearning.
+Avantage : Minimaliste, proche de votre approche simple.
+
+- BuildingGym: Toolbox open-source pour RL en gestion énergétique de bâtiments (inclut envs pour température/chauffage). Compatible avec RLlib ou Stable Baselines3 ; simule variations climatiques. Installation : Via GitHub.
+Exemple : Optimisation de consommation en temps réel. Détails sur arXiv.
