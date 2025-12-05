@@ -53,7 +53,7 @@ def faire_action(chambre, action):
     
     # Avancer le temps
     chambre['step'] += 1
-    done = chambre['step'] >= 50  # Épisode de 50 steps
+    done = chambre['step'] >= 100 # Épisode de 50 steps
     
     return reward, done
 
@@ -158,7 +158,7 @@ def entrainer(episodes=200):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("rewards_plot1.png")  # <-- sauvegarde en PNG
+    plt.savefig("rewards_plot.png")  # <-- sauvegarde en PNG
     plt.close()
 
     print("\n✅ Entraînement terminé ! Le plot a été enregistré sous 'rewards_plot1.png'\n")
@@ -176,7 +176,7 @@ def tester(q_table):
     temperatures = []
     actions_taken = []
 
-    for step in range(50):
+    for step in range(100):
         temp = discretiser(chambre['temp'])
         action = choisir_action(q_table, temp, epsilon=0)
         reward, done = faire_action(chambre, action)
@@ -196,7 +196,7 @@ def tester(q_table):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("temperature_test1.png")
+    plt.savefig("temperature_test.png")
     plt.close()
 
     print("\n✅ Test terminé ! Le plot a été enregistré sous 'temperature_test1.png'\n")
