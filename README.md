@@ -1,25 +1,25 @@
 # temperature-rl-project
-🌡️ Contrôle intelligent de température par apprentissage par renforcement (Q-Learning). Agent autonome qui maintient une pièce entre 20-22°C en optimisant confort et consommation énergétique.
-# 🌡️ Temperature Control with Q-Learning
+Contrôle intelligent de température par apprentissage par renforcement (Q-Learning). Agent autonome qui maintient une pièce entre 20-22°C en optimisant confort et consommation énergétique.
+#  Temperature Control with Q-Learning
 
 Système de contrôle intelligent de température utilisant l'apprentissage par renforcement (Reinforcement Learning). Un agent Q-Learning apprend automatiquement à maintenir une pièce dans une zone de confort (20-22°C) tout en minimisant la consommation énergétique.
 
-## 🎯 Objectif
+##  Objectif
 
 Développer un agent intelligent capable de :
-- ✅ Maintenir la température dans une zone de confort (20-22°C)
-- ✅ Minimiser la consommation énergétique
-- ✅ S'adapter aux variations de température extérieure
-- ✅ Apprendre sans programmation explicite des règles
+-  Maintenir la température dans une zone de confort (20-22°C)
+-  Minimiser la consommation énergétique
+-  S'adapter aux variations de température extérieure
+-  Apprendre sans programmation explicite des règles
 
-## 🧠 Approche
+##  Approche
 
 **Algorithme** : Q-Learning (Reinforcement Learning)
 - **État** : Température intérieure et extérieure
 - **Actions** : Refroidir, Ne rien faire, Chauffer
 - **Récompense** : +10 dans zone confort, -1 hors zone, pénalité énergétique
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Installation
 ```bash
@@ -32,11 +32,11 @@ python main.py
 ```
 
 ### Résultats attendus
-- ✅ Agent apprend en ~100 épisodes
-- ✅ Maintient la température 80-90% du temps
-- ✅ Table Q avec ~150-200 états appris
+-  Agent apprend en ~100 épisodes
+-  Maintient la température 80-90% du temps
+-  Table Q avec ~150-200 états appris
 
-## 📊 Résultats
+##  Résultats
 
 L'agent apprend à :
 1. **Chauffer** quand température < 20°C
@@ -44,7 +44,7 @@ L'agent apprend à :
 3. **Ne rien faire** quand dans la zone de confort
 4. **Anticiper** les variations thermiques
 
-## 🛠️ Technologies
+##  Technologies
 
 - **Python** 3.8+
 - **Q-Learning** (Tabular RL)
@@ -52,7 +52,7 @@ L'agent apprend à :
 - **NumPy** (calculs)
 - **Matplotlib** (visualisation)
 
-## 📁 Structure du projet
+##  Structure du projet
 ```
 temperature-rl/
 ├── simple_qlearning.py    # Version minimale (débutant)
@@ -61,15 +61,15 @@ temperature-rl/
 └── results/               # Graphiques et résultats
 ```
 
-## 🔄 Perspectives
+##  Perspectives
 
-- [ ] Intégration Node-RED/MQTT pour déploiement IoT
-- [ ] Multi-pièces avec coordination
-- [ ] Algorithmes avancés (SARSA, DQN)
-- [ ] Prise en compte tarification électrique variable
-- [ ] Prédiction météo intégrée
+-  Intégration Node-RED/MQTT pour déploiement IoT
+-  Multi-pièces avec coordination
+-  Algorithmes avancés (SARSA, DQN)
+-  Prise en compte tarification électrique variable
+-  Prédiction météo intégrée
 
-## 📚 Références
+##  Références
 
 - **Gymnasium** : https://gymnasium.farama.org/
 - **Q-Learning** : Sutton & Barto - Reinforcement Learning: An Introduction
@@ -77,34 +77,9 @@ temperature-rl/
   - [VectorInstitute/HV-Ai-C](https://github.com/VectorInstitute/HV-Ai-C)
   - [the5avage/Q-Learning](https://github.com/the5avage/Q-Learning)
 
-## 👤 Auteur
+##  Auteur
 
 Samir HAMOUDA & Raouf OCHI - Projet d'apprentissage par renforcement
 
-## 📄 Licence
 
 
-## 🌟 Remerciements
-
-Merci à la communauté Gymnasium et aux projets open-source qui ont inspiré ce travail.
-```
-
----
-
-## 🏷️ **Topics à ajouter sur GitHub**
-
-Clique sur "Add topics" et ajoute :
-```
-reinforcement-learning
-q-learning
-temperature-control
-hvac
-iot
-smart-home
-gymnasium
-openai-gym
-machine-learning
-python
-automation
-energy-optimization
-domotics
