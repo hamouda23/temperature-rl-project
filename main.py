@@ -35,9 +35,9 @@ def faire_action(chambre, action):
     
     # Effet de l'action
     if action == 0:  # Refroidir
-        chambre['temp'] -= 2
+        chambre['temp'] -= 1
     elif action == 2:  # Chauffer
-        chambre['temp'] += 2
+        chambre['temp'] += 1
     # Sinon (action == 1) : rien faire
     
     # Un peu de variation naturelle
